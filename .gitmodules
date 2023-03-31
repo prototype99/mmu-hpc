@@ -1,3 +1,6 @@
 [submodule "references"]
 	path = references
 	url = git@github.com:prototype99/references.git
+[submodule "mmu-hpc-2022-2023"]
+	path = mmu-hpc-2022-2023
+	url = https://github.com/mkbane/mmu-hpc-2022-2023.git
