@@ -434,8 +434,52 @@ Platforms
 ARCHER2
 \end_layout
 
+\begin_layout Subsection
+Compilation
+\end_layout
+
+\begin_layout Subsection
+Runtime environment
+\end_layout
+
+\begin_layout Subsection
+Featured tests
+\end_layout
+
+\begin_layout Subsection
+Method
+\end_layout
+
+\begin_layout Subsection
+Results
+\end_layout
+
 \begin_layout Section
 GPU
+\end_layout
+
+\begin_layout Subsection
+Compilation
+\end_layout
+
+\begin_layout Subsection
+GPU hardware
+\end_layout
+
+\begin_layout Subsection
+Runtime environment
+\end_layout
+
+\begin_layout Subsection
+Featured tests
+\end_layout
+
+\begin_layout Subsection
+Method
+\end_layout
+
+\begin_layout Subsection
+Results
 \end_layout
 
 \begin_layout Chapter
