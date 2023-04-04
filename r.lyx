@@ -494,6 +494,12 @@ Platforms
 ARCHER2
 \end_layout
 
+\begin_layout Standard
+The first platform to be tested is ARCHER2.
+ ARCHER2 has the git and wget commands installed, which facilitate software
+ downloads.
+\end_layout
+
 \begin_layout Subsection
 Compilation
 \end_layout
