@@ -511,7 +511,7 @@ The software for this platform was compiled with the default compiler within
  developed compiler which has become a strong competitor to the classic
  GCC compiler.
  As this is a standard shell environment, the compiler has been linked to
- the cc command, meaning that it is as simple as the command depicted in
+ the cc command, meaning that it is as simple as the script depicted in
  figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -522,7 +522,7 @@ noprefix "false"
 
 \end_inset
 
-; [flags] is the combination of compiler flags to be used.
+.
  -march=native was briefly tested as a compiler flag, however the effects
  seemed to be negligible.
  Other compilers are available via the use of programming environments.
@@ -563,7 +563,87 @@ status open
 
 \begin_layout Plain Layout
 
-cc ASSESS-barrier.c [flags] -o ASSESS-barrier-[flags].exe
+#!/bin/bash
+\end_layout
+
+\begin_layout Plain Layout
+
+#could this be simplified? probably, but let's just play it safe
+\end_layout
+
+\begin_layout Plain Layout
+
+FLAG=0
+\end_layout
+
+\begin_layout Plain Layout
+
+cc ASSESS-barrier.c -O${FLAG} -o ASSESS-barrier-O${FLAG}.exe
+\end_layout
+
+\begin_layout Plain Layout
+
+mv ASSESS-barrier-O${FLAG}.exe $WORK/a
+\end_layout
+
+\begin_layout Plain Layout
+
+FLAG=1
+\end_layout
+
+\begin_layout Plain Layout
+
+cc ASSESS-barrier.c -O${FLAG} -o ASSESS-barrier-O${FLAG}.exe
+\end_layout
+
+\begin_layout Plain Layout
+
+mv ASSESS-barrier-O${FLAG}.exe $WORK/a
+\end_layout
+
+\begin_layout Plain Layout
+
+FLAG=2
+\end_layout
+
+\begin_layout Plain Layout
+
+cc ASSESS-barrier.c -O${FLAG} -o ASSESS-barrier-O${FLAG}.exe
+\end_layout
+
+\begin_layout Plain Layout
+
+mv ASSESS-barrier-O${FLAG}.exe $WORK/a
+\end_layout
+
+\begin_layout Plain Layout
+
+FLAG=3
+\end_layout
+
+\begin_layout Plain Layout
+
+cc ASSESS-barrier.c -O${FLAG} -o ASSESS-barrier-O${FLAG}.exe
+\end_layout
+
+\begin_layout Plain Layout
+
+mv ASSESS-barrier-O${FLAG}.exe $WORK/a
+\end_layout
+
+\begin_layout Plain Layout
+
+FLAG=fast
+\end_layout
+
+\begin_layout Plain Layout
+
+cc ASSESS-barrier.c -O${FLAG} -o ASSESS-barrier-O${FLAG}.exe
+\end_layout
+
+\begin_layout Plain Layout
+
+mv ASSESS-barrier-O${FLAG}.exe $WORK/a
 \end_layout
 
 \end_inset
