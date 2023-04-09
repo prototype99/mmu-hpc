@@ -523,6 +523,8 @@ noprefix "false"
 \end_inset
 
 ; [flags] is the combination of compiler flags to be used.
+ -march=native was briefly tested as a compiler flag, however the effects
+ seemed to be negligible.
  Other compilers are available via the use of programming environments.
 \begin_inset Newline newline
 \end_inset
