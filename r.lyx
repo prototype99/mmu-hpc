@@ -557,7 +557,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset listings
-lstparams "language=bash"
+lstparams "language=bash,breaklines=true"
 inline false
 status open
 
@@ -568,27 +568,12 @@ status open
 
 \begin_layout Plain Layout
 
-#could this be simplified? probably, but let's just play it safe
+for FLAG in 0 1 2 3 fast
 \end_layout
 
 \begin_layout Plain Layout
 
-FLAG=0
-\end_layout
-
-\begin_layout Plain Layout
-
-cc ASSESS-barrier.c -O${FLAG} -o ASSESS-barrier-O${FLAG}.exe
-\end_layout
-
-\begin_layout Plain Layout
-
-mv ASSESS-barrier-O${FLAG}.exe $WORK/a
-\end_layout
-
-\begin_layout Plain Layout
-
-FLAG=1
+do
 \end_layout
 
 \begin_layout Plain Layout
@@ -603,47 +588,7 @@ mv ASSESS-barrier-O${FLAG}.exe $WORK/a
 
 \begin_layout Plain Layout
 
-FLAG=2
-\end_layout
-
-\begin_layout Plain Layout
-
-cc ASSESS-barrier.c -O${FLAG} -o ASSESS-barrier-O${FLAG}.exe
-\end_layout
-
-\begin_layout Plain Layout
-
-mv ASSESS-barrier-O${FLAG}.exe $WORK/a
-\end_layout
-
-\begin_layout Plain Layout
-
-FLAG=3
-\end_layout
-
-\begin_layout Plain Layout
-
-cc ASSESS-barrier.c -O${FLAG} -o ASSESS-barrier-O${FLAG}.exe
-\end_layout
-
-\begin_layout Plain Layout
-
-mv ASSESS-barrier-O${FLAG}.exe $WORK/a
-\end_layout
-
-\begin_layout Plain Layout
-
-FLAG=fast
-\end_layout
-
-\begin_layout Plain Layout
-
-cc ASSESS-barrier.c -O${FLAG} -o ASSESS-barrier-O${FLAG}.exe
-\end_layout
-
-\begin_layout Plain Layout
-
-mv ASSESS-barrier-O${FLAG}.exe $WORK/a
+done
 \end_layout
 
 \end_inset
