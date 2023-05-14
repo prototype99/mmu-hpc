@@ -626,7 +626,7 @@ name "fig:The-compilation-command"
 \end_layout
 
 \begin_layout Subsection
-Runtime environment
+Execution
 \end_layout
 
 \begin_layout Subsection
@@ -692,7 +692,7 @@ deviceQuery command output
 \end_layout
 
 \begin_layout Subsection
-Runtime environment
+Execution
 \end_layout
 
 \begin_layout Subsection
