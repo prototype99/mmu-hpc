@@ -1092,7 +1092,7 @@ For each of the optimisations O0, O1, O2, O3 and Ofast, the software will
 \end_layout
 
 \begin_layout Subsection
-Method
+Timing
 \end_layout
 
 \begin_layout Subsection
@@ -1154,7 +1154,7 @@ Featured tests
 \end_layout
 
 \begin_layout Subsection
-Method
+Timing
 \end_layout
 
 \begin_layout Subsection
