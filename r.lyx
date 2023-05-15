@@ -648,6 +648,7 @@ noprefix "false"
 
 
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -762,7 +763,7 @@ Each batch subcommand will iterate over 128 values, the largest of which
  fully saturates the selected number of nodes, figure 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:One-of-the-1"
+reference "fig:One-of-the-1-1"
 plural "false"
 caps "false"
 noprefix "false"
@@ -983,6 +984,54 @@ srun --nodes=2 --ntasks=${PROCS} --cpu-bind=verbose,rank ./${EXE} | tee ${TMPFIL
 time=`grep seconds ${TMPFILE} |awk '{print $(NF-1)}'`
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset listings
+lstparams "language=bash,breaklines=true"
+inline false
+status open
+
 \begin_layout Plain Layout
 
 echo $PROCS $time >> $TIMING
@@ -1015,7 +1064,7 @@ cat $TIMING
 One of the batch subcommands
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:One-of-the-1"
+name "fig:One-of-the-1-1"
 
 \end_inset
 
