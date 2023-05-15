@@ -629,6 +629,409 @@ name "fig:The-compilation-command"
 Execution
 \end_layout
 
+\begin_layout Standard
+Due to limitations, the jobs need to be queued in two separate batches.
+ The first batch will collect the values for one node and two nodes as depicted
+ in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:One-of-the"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the second batch will collect values for three and four nodes.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset listings
+lstparams "language=bash,breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+#!/bin/bash
+\end_layout
+
+\begin_layout Plain Layout
+
+for FLAG in 0 1 2 3 fast
+\end_layout
+
+\begin_layout Plain Layout
+
+do
+\end_layout
+
+\begin_layout Plain Layout
+
+sbatch batch_mpi_scaling-n1.sh ASSESS-barrier-O${FLAG}.exe
+\end_layout
+
+\begin_layout Plain Layout
+
+done
+\end_layout
+
+\begin_layout Plain Layout
+
+for FLAG in 0 1 2 3 fast
+\end_layout
+
+\begin_layout Plain Layout
+
+do
+\end_layout
+
+\begin_layout Plain Layout
+
+sbatch batch_mpi_scaling-n2.sh ASSESS-barrier-O${FLAG}.exe
+\end_layout
+
+\begin_layout Plain Layout
+
+done
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+One of the batch commands
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:One-of-the"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Each batch subcommand will iterate over 128 values, the largest of which
+ fully saturates the selected number of nodes, figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:One-of-the-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ being one such example.
+ The output is saved which allows for easier data collection.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset listings
+lstparams "language=bash,breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+#!/bin/bash
+\end_layout
+
+\begin_layout Plain Layout
+
+## (c) m.bane@mmu.ac.uk | alterations by 19096347@stu.mmu.ac.uk
+\end_layout
+
+\begin_layout Plain Layout
+
+## batch system flags:
+\end_layout
+
+\begin_layout Plain Layout
+
+#SBATCH -p standard --qos=short --account=ta094-mmuteach
+\end_layout
+
+\begin_layout Plain Layout
+
+#SBATCH -N 2
+\end_layout
+
+\begin_layout Plain Layout
+
+## trap any errors and quit immediately
+\end_layout
+
+\begin_layout Plain Layout
+
+trap 'echo error occurred on line $LINENO;exit -1' ERR
+\end_layout
+
+\begin_layout Plain Layout
+
+if [[ $# -ne 1 ]] ; then
+\end_layout
+
+\begin_layout Plain Layout
+
+echo Error
+\backslash
+: you need to provide name of OpenMP executable
+\backslash
+!
+\end_layout
+
+\begin_layout Plain Layout
+
+echo Usage
+\backslash
+: $0 exeFile 
+\end_layout
+
+\begin_layout Plain Layout
+
+echo 
+\backslash
+- Runs 
+\backslash
+$exeFile on 1 up to number of cores avail to job
+\end_layout
+
+\begin_layout Plain Layout
+
+echo NB view $0 for actual values of 
+\backslash
+#threads used
+\end_layout
+
+\begin_layout Plain Layout
+
+exit -1 fi
+\end_layout
+
+\begin_layout Plain Layout
+
+# use this if wish to debug by seeing what is being executed
+\end_layout
+
+\begin_layout Plain Layout
+
+# set -x
+\end_layout
+
+\begin_layout Plain Layout
+
+EXE=$1 ls -l $EXE        # quick check as to what we about to run
+\end_layout
+
+\begin_layout Plain Layout
+
+# create unique (using jobID) file to save
+\end_layout
+
+\begin_layout Plain Layout
+
+#threads & time taken TIMING=mpi_time-${SLURM_JOBID}.txt
+\end_layout
+
+\begin_layout Plain Layout
+
+touch $TIMING
+\end_layout
+
+\begin_layout Plain Layout
+
+echo saving timing into to $TIMING
+\end_layout
+
+\begin_layout Plain Layout
+
+# define number of MPI processes "--ntasks=${ranks}"
+\end_layout
+
+\begin_layout Plain Layout
+
+# bind MPI process to physical processor core in order of rank & core number
+ "--cpu-bind=rank"
+\end_layout
+
+\begin_layout Plain Layout
+
+# can use "--cpu-bind=verbose"
+\end_layout
+
+\begin_layout Plain Layout
+
+export OMP_NUM_THREADS=1 # good practise to prevent any threaded system
+ libraries spawning new threads
+\end_layout
+
+\begin_layout Plain Layout
+
+TMPFILE=/tmp/${USER}-mpi.txt
+\end_layout
+
+\begin_layout Plain Layout
+
+# loop over various number of MPI processes, copying timing output to $TIMING
+\end_layout
+
+\begin_layout Plain Layout
+
+for PROCS in 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143
+ 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161
+ 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179
+ 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197
+ 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215
+ 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233
+ 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251
+ 252 253 254 255 256
+\end_layout
+
+\begin_layout Plain Layout
+
+do
+\end_layout
+
+\begin_layout Plain Layout
+
+echo Running $EXE in directory $PWD on $PROCS MPI processes
+\end_layout
+
+\begin_layout Plain Layout
+
+srun --nodes=2 --ntasks=${PROCS} --cpu-bind=verbose,rank ./${EXE} | tee ${TMPFILE
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+time=`grep seconds ${TMPFILE} |awk '{print $(NF-1)}'`
+\end_layout
+
+\begin_layout Plain Layout
+
+echo $PROCS $time >> $TIMING
+\end_layout
+
+\begin_layout Plain Layout
+
+done
+\end_layout
+
+\begin_layout Plain Layout
+
+cat $TIMING
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+One of the batch subcommands
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:One-of-the-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Featured tests
 \end_layout
@@ -679,10 +1082,6 @@ deviceQuery command output
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
