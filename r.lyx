@@ -1085,6 +1085,12 @@ name "fig:One-of-the-1-1"
 Featured tests
 \end_layout
 
+\begin_layout Standard
+For each of the optimisations O0, O1, O2, O3 and Ofast, the software will
+ be run in parallel from 1 process on one node to 512 processes over four
+ nodes.
+\end_layout
+
 \begin_layout Subsection
 Method
 \end_layout
