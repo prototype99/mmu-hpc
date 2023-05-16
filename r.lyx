@@ -755,10 +755,6 @@ name "fig:One-of-the"
 
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
 Each batch subcommand will iterate over 128 values, the largest of which
  fully saturates the selected number of nodes, figure 
 \begin_inset CommandInset ref
