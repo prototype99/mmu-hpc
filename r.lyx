@@ -1126,6 +1126,23 @@ GPU hardware
 \end_layout
 
 \begin_layout Standard
+For convenience sake, a home system's NVIDIA MX450 GPU is being used instead
+ of the NVIDIA RTX 2070 super GPU of the provided laboratory machines, the
+ specs of the MX450 can be seen in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:deviceQuery-command-output"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Float figure
 placement H
 wide false
@@ -1147,10 +1164,78 @@ status open
 
 \begin_layout Plain Layout
 deviceQuery command output
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:deviceQuery-command-output"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:deviceQuery-sample-for"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows the output for the laboratory GPU.
+ The laboratory GPU is a more powerful device, therefore it can be expected
+ that it would provide faster timing results than the MX450.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename rtx2070.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+deviceQuery sample for laboratory GPU
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:deviceQuery-sample-for"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
