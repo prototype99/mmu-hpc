@@ -1113,6 +1113,15 @@ noprefix "false"
 .
 \end_layout
 
+\begin_layout Subsection
+General performance
+\end_layout
+
+\begin_layout Standard
+As the results follow a general pattern, it should be logical to assume
+ that they can be described by a function.
+\end_layout
+
 \begin_layout Section
 GPU
 \end_layout
