@@ -306,7 +306,7 @@ Abbreviations
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="2">
+<lyxtabular version="3" rows="6" columns="2">
 <features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="0pt">
@@ -405,6 +405,26 @@ I
 
 \begin_layout Plain Layout
 The author
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MPI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Message Passing Interface
 \end_layout
 
 \end_inset
@@ -1111,6 +1131,65 @@ noprefix "false"
 \end_inset
 
 .
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:A-graph-of"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows that the full results have 3 significant levels of optimisation:
+ O0, O3 and Ofast; this means that there are 3 separate integrands based
+ on the tested optimisations.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename archer-graph-overall.svg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A graph of all the ARCHER2 results
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:A-graph-of"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1120,6 +1199,73 @@ General performance
 \begin_layout Standard
 As the results follow a general pattern, it should be logical to assume
  that they can be described by a function.
+ Where n is the number of MPI processes, O0 is represented by 
+\begin_inset Formula $\frac{0.930642}{n}$
+\end_inset
+
+ and O3 is represented by 
+\begin_inset Formula $\frac{0.659388}{n}$
+\end_inset
+
+.
+ Ofast is not easily represented as it changes steepness twice.
+ These representations are ≈86% mean accuracy, which as seen in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:A-graph-of-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is a reasonably good fit to the raw curve.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename archer-graph-integrand.svg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A graph of calculated integrands and the corresponding values they recreate
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:A-graph-of-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1128,6 +1274,93 @@ GPU
 
 \begin_layout Subsection
 Compilation
+\end_layout
+
+\begin_layout Standard
+The GPU software could be compiled with a simple command, seen in figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:The-compilation-command-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset listings
+lstparams "language=bash,breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+nvcc quad-cuda-ASSESS.cu -o quad-cuda-ASSESS.exe
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The compilation command
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-compilation-command-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
