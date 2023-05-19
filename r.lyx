@@ -1486,8 +1486,101 @@ name "fig:deviceQuery-sample-for"
 Execution
 \end_layout
 
+\begin_layout Standard
+Execution is similarly simple to compilation as illustrated in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:The-execution-command"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, T is the number of threads per block.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset listings
+lstparams "language=bash,breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+./quad-cuda-ASSESS.exe 4096000 ${T}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The execution command
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-execution-command"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Featured tests
+\end_layout
+
+\begin_layout Standard
+T's value cannot be below 4 as it causes a segfault and may not be above
+ 1024 due to software limitations.
+ As each execution is below 1 second, it is logical to try every possible
+ value from 4 to 1024 for a complete set of results.
 \end_layout
 
 \begin_layout Subsection
